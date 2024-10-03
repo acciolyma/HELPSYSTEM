@@ -11,6 +11,13 @@ app = Flask(__name__)
 def homepage():
     return render_template("homepage.html")
 
+@app.route("/cadastro")
+def cadastro():
+    return render_template("cadastro.html")
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 @app.route("/menu")
 def menu():
