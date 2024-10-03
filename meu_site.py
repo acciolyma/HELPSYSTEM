@@ -1,4 +1,8 @@
+# ROTAS DO SITE
+
 from flask import Flask, render_template
+from models import db, Pergunta # Importa o banco de dados e o modelo de Pergunta
+
 
 app = Flask(__name__)
 
@@ -7,8 +11,11 @@ app = Flask(__name__)
 # função -> o que você quer exibir naquela página
 #template 
 
+# Configuração do banco de dados
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
+db.init_app(app)
 
-
+# Páginas do site
 @app.route("/cadastro")
 def cadastro():
     return render_template("cadastro.html")
@@ -17,7 +24,7 @@ def cadastro():
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route("/")  #app é o nome do site
+@app.route("/")
 def homepage():
     return render_template("homepage.html")
 
@@ -31,21 +38,9 @@ def perfil():
 
 @app.route("/pergunta")
 def pergunta():
-    return render_template("pergunta.html")
+    perguntas = Pergunta.query.all()  # Exibe todas as perguntas
+    return render_template("pergunta.html", perguntas=perguntas)
 
-
-
-
-'''app.route("/usuarios/<nome_usuario>")   #criação de página personalizada
-def usuarios(nome_usuario):
-    return render_template("usuarios.html", nome_usuario=nome_usuario)'''
-
-
-
-# colcar o site no ar:
-
+# Inicia o servidor
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
-
-
-    

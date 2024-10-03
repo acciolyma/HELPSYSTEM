@@ -1,10 +1,9 @@
-from flask import Flask, render_template
+# CONFIGURAÇÃO BANCO DE DADOS
+
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 # Tabela de Usuários (trabalhadores)
 class Usuario(db.Model):
@@ -40,21 +39,3 @@ class Resposta(db.Model):
 
     def __repr__(self):
         return f'Resposta(Autor: "{self.autor.nome}", Pergunta ID: {self.pergunta_id})'
-
-# Rota para homepage
-@app.route('/')
-def homepage():
-    return "<h1>Bem-vindo ao Help System!</h1><p>Veja as perguntas disponíveis ou faça login para participar.</p>"
-
-# Rota para visualizar perguntas
-@app.route('/perguntas')
-def ver_perguntas():
-    perguntas = Pergunta.query.all()
-    return render_template('perguntas.html', perguntas=perguntas)
-
-# Cria o banco de dados
-with app.app_context():
-    db.create_all()
-
-if __name__ == '__main__':
-    app.run(debug=True)
