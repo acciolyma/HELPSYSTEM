@@ -36,15 +36,9 @@ def pergunta():
 
 
 
-
-
-
-
-
-
-@app.route("/usuarios/<nome_usuario>")   #criação de página personalizada
+'''app.route("/usuarios/<nome_usuario>")   #criação de página personalizada
 def usuarios(nome_usuario):
-    return render_template("usuarios.html", nome_usuario=nome_usuario)
+    return render_template("usuarios.html", nome_usuario=nome_usuario)'''
 
 
 
@@ -53,5 +47,5 @@ def usuarios(nome_usuario):
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
 
-    #servidor do heroku
+
     

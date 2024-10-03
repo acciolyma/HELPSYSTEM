@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11fc515e-09db-43c3-984e-5a6b9a03e4d9" name="Changes" comment="organização das rotas no arquivo meu_site.py">
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+    <list default="true" id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/perfil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meu_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/meu_site.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cadastro.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,88 +19,52 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="2muDcbgj93v9A28RFaq9e8GR1r5" />
+  <component name="ProjectId" id="2mtNG9rDv7UpCcWosEouCCcTHyx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.hello_world.executor": "Run",
+    "Python.mariabranch.executor": "Run",
     "Python.meu_site.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "Python.models.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Windows/Desktop/specialisterne/1- Disciplinas/Formacao Tecnica/projeto final/helpsystem/HELPSYSTEM/templates"
+    "git-widget-placeholder": "maria",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Windows\Desktop\specialisterne\1- Disciplinas\Formacao Tecnica\projeto final\helpsystem\HELPSYSTEM\templates" />
-    </key>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="python" />
+    </option>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="11fc515e-09db-43c3-984e-5a6b9a03e4d9" name="Changes" comment="" />
-      <created>1727917647976</created>
+      <changelist id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="" />
+      <created>1727891818020</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1727917647976</updated>
+      <updated>1727891818020</updated>
     </task>
-    <task id="LOCAL-00001" summary="criação das páginas html">
-      <option name="closed" value="true" />
-      <created>1727959983627</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1727959983627</updated>
-    </task>
-    <task id="LOCAL-00002" summary="criação da página de perfil">
-      <option name="closed" value="true" />
-      <created>1727960539381</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1727960539381</updated>
-    </task>
-    <task id="LOCAL-00003" summary="organização das rotas no arquivo meu_site.py">
-      <option name="closed" value="true" />
-      <created>1727961287204</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1727961287204</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit test 2" />
-    <MESSAGE value="criação das páginas html" />
-    <MESSAGE value="criação da página de perfil" />
-    <MESSAGE value="organização das rotas no arquivo meu_site.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="organização das rotas no arquivo meu_site.py" />
   </component>
 </project>
