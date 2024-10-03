@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11fc515e-09db-43c3-984e-5a6b9a03e4d9" name="Changes" comment="criação das páginas html">
-      <change afterPath="$PROJECT_DIR$/templates/perfil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="11fc515e-09db-43c3-984e-5a6b9a03e4d9" name="Changes" comment="criação da página de perfil">
       <change beforePath="$PROJECT_DIR$/meu_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/meu_site.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,12 +73,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727959983627</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="criação da página de perfil">
+      <option name="closed" value="true" />
+      <created>1727960539381</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727960539381</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit test 2" />
     <MESSAGE value="criação das páginas html" />
-    <option name="LAST_COMMIT_MESSAGE" value="criação das páginas html" />
+    <MESSAGE value="criação da página de perfil" />
+    <option name="LAST_COMMIT_MESSAGE" value="criação da página de perfil" />
   </component>
 </project>

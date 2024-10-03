@@ -7,26 +7,40 @@ app = Flask(__name__)
 # função -> o que você quer exibir naquela página
 #template 
 
-@app.route("/")  #app é o nome do site
-def homepage():
-    return render_template("homepage.html")
+
 
 @app.route("/cadastro")
 def cadastro():
     return render_template("cadastro.html")
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
+@app.route("/")  #app é o nome do site
+def homepage():
+    return render_template("homepage.html")
+
+@app.route("/menu")
+def menu():
+    return render_template("menu.html")
 
 @app.route("/perfil")
 def perfil():
     return render_template("perfil.html")
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
+@app.route("/pergunta")
+def pergunta():
+    return render_template("pergunta.html")
 
-@app.route("/menu")
-def menu():
-    return render_template("menu.html")
+
+
+
+
+
+
+
+
 
 @app.route("/usuarios/<nome_usuario>")   #criação de página personalizada
 def usuarios(nome_usuario):
