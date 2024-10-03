@@ -15,6 +15,11 @@ def homepage():
 def cadastro():
     return render_template("cadastro.html")
 
+
+@app.route("/perfil")
+def perfil():
+    return render_template("perfil.html")
+
 @app.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html")
