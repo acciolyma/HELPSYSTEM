@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="BACKEND - Para análise">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/forum.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/forum.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meu_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/meu_site.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cadastro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pergunta.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pergunta.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,11 +118,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727976805482</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="BACKEND - Para análise">
+      <option name="closed" value="true" />
+      <created>1728051991442</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728051991443</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Banco de dados SQLITE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Banco de dados SQLITE" />
+    <MESSAGE value="BACKEND - Para análise" />
+    <option name="LAST_COMMIT_MESSAGE" value="BACKEND - Para análise" />
   </component>
 </project>

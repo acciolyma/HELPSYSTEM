@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from models import db, Usuario, Pergunta
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -47,29 +48,36 @@ def homepage():
             return redirect(url_for('homepage'))
 
         flash('Login realizado com sucesso!', 'success')
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('menu'))
 
     return render_template("homepage.html")
 
 
 # Rota para pergunta
+
+@app.route('/perguntas')
+def listar_perguntas():
+    perguntas = Pergunta.query.all()
+    return render_template("pergunta.html", perguntas=perguntas)
+
+
 @app.route('/pergunta', methods=['POST'])
 def adicionar_pergunta():
     titulo = request.form['titulo']
     conteudo = request.form['conteudo']
-    autor_id = session.get('user_id')  # Supondo que você armazena o ID do usuário na sessão #OLHEM ISSO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    autor_id = session.get('user_id')  # Supondo que o ID do usuário está na sessão
 
     nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
     db.session.add(nova_pergunta)
     db.session.commit()
 
-    return redirect('/dashboard')  # Redireciona para o dashboard após salvar
+    return redirect(url_for('menu'))
 
 @app.route('/login', methods=['POST'])
 def login():
     # Lógica de autenticação...
     session['user_id'] = usuario.id  # Armazenando o ID do usuário na sessão
-    return redirect('/dashboard')
+    return redirect('/menu')
 
 
 @app.route("/dashboard")

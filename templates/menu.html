@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <title>Minha primeira página HTML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
-    <h1>Bem-vindo ao mundo HTML!</h1>
-    <p>Este é um parágrafo de exemplo.</p>
+    <h1>Bem-vindo ao Help System</h1>
+    <a href="/pergunta">Adicionar Pergunta</a>
+    <!-- Outras opções do dashboard -->
 </body>
+
+<form method="POST" action="{{ url_for('adicionar_pergunta') }}">
+    <label for="autor">Autor:</label>
+    <select name="autor_id">
+        </select>
+    <br>
+    <label for="titulo">Título:</label>
+    <input type="text" name="titulo" required>
+    <br>
+    <label for="conteudo">Conteúdo:</label>
+    <textarea name="conteudo" required></textarea>
+    <br>
+    <button type="submit">Adicionar Pergunta</button>
+</form>
+
 </html>

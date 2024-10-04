@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Precisa de Ajuda?</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <h1>Fórum de Suporte</h1>
 
     <h2>Adicionar uma nova pergunta</h2>
     <form action="/pergunta" method="POST">
@@ -19,6 +19,20 @@
         <button type="submit">Enviar</button>
     </form>
 
-    <!-- Aqui você pode adicionar a lógica para exibir perguntas existentes, se necessário -->
+   <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas</title>
+</head>
+<body>
+    <h1>Todas as Perguntas</h1>
+
+    {% for pergunta in perguntas %}
+        <h2>{{ pergunta.titulo }}</h2>
+        <p>{{ pergunta.conteudo }}</p>
+        <p>Autor: {{ pergunta.autor.nome }}</p>
+    {% endfor %}
 </body>
 </html>
