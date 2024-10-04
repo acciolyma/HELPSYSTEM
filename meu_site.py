@@ -47,6 +47,8 @@ def homepage():
             flash('Email ou senha incorretos', 'error')
             return redirect(url_for('homepage'))
 
+        # Salva o ID do usuário na sessão
+        session['user_id'] = usuario.id
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('menu'))
 
@@ -79,16 +81,26 @@ def adicionar_pergunta():
         db.session.commit()
         flash('Pergunta adicionada com sucesso!', 'success')
     except Exception as e:
-        # Logar o erro para depuração
         app.logger.error(f"Erro ao adicionar pergunta: {e}")
         flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
 
     return redirect(url_for('menu'))
 
+
 @app.route('/login', methods=['POST'])
 def login():
-    # Lógica de autenticação...
-    session['user_id'] = usuario.id  # Armazenando o ID do usuário na sessão
+    email = request.form['email']
+    senha = request.form['senha']
+
+    # Verifica se o usuário existe e se a senha está correta
+    usuario = Usuario.query.filter_by(email=email).first()
+    if not usuario or not check_password_hash(usuario.senha, senha):
+        flash('Email ou senha incorretos', 'error')
+        return redirect(url_for('homepage'))
+
+    # Armazenando o ID do usuário na sessão
+    session['user_id'] = usuario.id
+    flash('Login realizado com sucesso!', 'success')
     return redirect('/menu')
 
 
