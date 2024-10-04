@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="11fc515e-09db-43c3-984e-5a6b9a03e4d9" name="Changes" comment="Arquivo template base para integrar bootstrap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="thiago" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -39,10 +43,12 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "Python.hello_world.executor": "Run",
     "Python.meu_site.executor": "Run",
+    "Python.models.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "thiago",
-    "last_opened_file_path": "C:/Users/Windows/Desktop/specialisterne/1- Disciplinas/Formacao Tecnica/projeto final/helpsystem/HELPSYSTEM/templates"
+    "git-widget-placeholder": "dashboard",
+    "last_opened_file_path": "C:/Users/Windows/Desktop/specialisterne/1- Disciplinas/Formacao Tecnica/projeto final/helpsystem/HELPSYSTEM/templates",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -98,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727962496107</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Arquivo template base para integrar bootstrap">
+      <option name="closed" value="true" />
+      <created>1727973676787</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727973676787</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
