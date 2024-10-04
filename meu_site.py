@@ -65,11 +65,23 @@ def listar_perguntas():
 def adicionar_pergunta():
     titulo = request.form['titulo']
     conteudo = request.form['conteudo']
-    autor_id = session.get('user_id')  # Supondo que o ID do usuário está na sessão
 
-    nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
-    db.session.add(nova_pergunta)
-    db.session.commit()
+    # Verificar se o usuário está logado
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para adicionar uma pergunta.', 'error')
+        return redirect(url_for('menu'))
+
+    autor_id = session.get('user_id')
+
+    try:
+        nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
+        db.session.add(nova_pergunta)
+        db.session.commit()
+        flash('Pergunta adicionada com sucesso!', 'success')
+    except Exception as e:
+        # Logar o erro para depuração
+        app.logger.error(f"Erro ao adicionar pergunta: {e}")
+        flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
 
     return redirect(url_for('menu'))
 
