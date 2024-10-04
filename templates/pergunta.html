@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Pergunta</title>
+    <title>Dashboard</title>
 </head>
 <body>
-    <h1>Adicionar uma nova pergunta</h1>
-    <form action="/adicionar_pergunta" method="POST">
+    <h1>Dashboard</h1>
+
+    <h2>Adicionar uma nova pergunta</h2>
+    <form action="/pergunta" method="POST">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required><br><br>
 
@@ -16,5 +18,7 @@
 
         <button type="submit">Enviar</button>
     </form>
+
+    <!-- Aqui você pode adicionar a lógica para exibir perguntas existentes, se necessário -->
 </body>
 </html>
