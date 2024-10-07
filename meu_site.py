@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-from models import db, Usuario, Pergunta, Resposta, Comentario
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from models import db, Usuario, Pergunta, Resposta
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -58,112 +58,111 @@ def homepage():
 
     return render_template("homepage.html")
 
-# Rota para listar perguntas
-@app.route('/perguntas')
-def listar_perguntas():
-    perguntas = Pergunta.query.all()
-    return render_template("pergunta.html", perguntas=perguntas)
-
 # Rota para adicionar pergunta
-@app.route('/pergunta', methods=['POST'])
-def adicionar_pergunta():
-    titulo = request.form['titulo']
-    conteudo = request.form['conteudo']
+@app.route("/pergunta", methods=['GET', 'POST'])
+def pergunta():
+    if request.method == 'POST':
+        titulo = request.form['titulo']
+        conteudo = request.form['conteudo']
 
+        if 'user_id' not in session:
+            flash('Você precisa estar logado para adicionar uma pergunta.', 'error')
+            return redirect(url_for('menu'))
+
+        autor_id = session.get('user_id')
+
+        try:
+            nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
+            db.session.add(nova_pergunta)
+            db.session.commit()
+            flash('Pergunta adicionada com sucesso!', 'success')
+        except Exception as e:
+            app.logger.error(f"Erro ao adicionar pergunta: {e}")
+            flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
+
+        return redirect(url_for('menu'))  # Redireciona para o menu após adicionar a pergunta
+
+    return render_template("pergunta.html")
+
+# Rota para o menu que lista todas as perguntas
+@app.route("/menu")
+def menu():
+    perguntas = Pergunta.query.order_by(Pergunta.data_criacao.desc()).all()  # Ordena as perguntas da mais recente para a mais antiga
+    for pergunta in perguntas:
+        pergunta.respostas = Resposta.query.filter_by(pergunta_id=pergunta.id).all()  # Obtém respostas para a pergunta
+
+    return render_template("menu.html", perguntas=perguntas)  # Passa as perguntas para o template
+
+# Rota para adicionar uma resposta
+@app.route('/responder_pergunta/<int:pergunta_id>', methods=['POST'])
+def adicionar_resposta(pergunta_id):
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para responder.', 'error')
+        return redirect(url_for('menu'))
+
+    conteudo = request.form['conteudo']
+    autor_id = session['user_id']
+
+    # Adiciona uma nova resposta à pergunta especificada
+    nova_resposta = Resposta(conteudo=conteudo, autor_id=autor_id, pergunta_id=pergunta_id)
+    db.session.add(nova_resposta)
+    db.session.commit()
+    flash('Resposta adicionada com sucesso!', 'success')
+
+    return redirect(url_for('menu'))
+
+# Rota para excluir perguntas (somente o autor pode excluir)
+@app.route('/excluir_pergunta/<int:pergunta_id>', methods=['POST'])
+def excluir_pergunta(pergunta_id):
+    pergunta = Pergunta.query.get_or_404(pergunta_id)
+    autor_id = session.get('user_id')
+
+    if pergunta.autor_id != autor_id:
+        flash('Você não tem permissão para excluir esta pergunta.', 'error')
+        return redirect(url_for('menu'))
+
+    # Excluir todas as respostas associadas à pergunta
+    for resposta in pergunta.respostas:
+        db.session.delete(resposta)
+
+    # Agora, exclua a pergunta
+    db.session.delete(pergunta)
+    db.session.commit()
+    flash('Pergunta excluída com sucesso!', 'success')
+    return redirect(url_for('menu'))
+
+@app.route('/excluir_resposta/<int:resposta_id>', methods=['POST'])
+def excluir_resposta(resposta_id):
+    resposta = Resposta.query.get_or_404(resposta_id)
+    autor_id = session.get('user_id')
+
+    if resposta.autor_id != autor_id:
+        flash('Você não tem permissão para excluir esta resposta.', 'error')
+        return redirect(url_for('menu'))
+
+    db.session.delete(resposta)
+    db.session.commit()
+    flash('Resposta excluída com sucesso!', 'success')
+    return redirect(url_for('menu'))
+
+# Rota para adicionar pergunta (diretamente do menu)
+@app.route("/adicionar_pergunta", methods=['POST'])
+def adicionar_pergunta():
     if 'user_id' not in session:
         flash('Você precisa estar logado para adicionar uma pergunta.', 'error')
         return redirect(url_for('menu'))
 
-    autor_id = session.get('user_id')
-
-    try:
-        nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
-        db.session.add(nova_pergunta)
-        db.session.commit()
-        flash('Pergunta adicionada com sucesso!', 'success')
-    except Exception as e:
-        app.logger.error(f"Erro ao adicionar pergunta: {e}")
-        flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
-
-    return redirect(url_for('pergunta'))
-
-# Rota para adicionar uma resposta
-@app.route('/resposta', methods=['POST'])
-def adicionar_resposta():
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para adicionar uma resposta.', 'error')
-        return redirect(url_for('menu'))
-
-    conteudo = request.json['conteudo']
-    pergunta_id = request.json['pergunta_id']
+    titulo = request.form['titulo']
+    conteudo = request.form['conteudo']
     autor_id = session['user_id']
 
-    nova_resposta = Resposta(conteudo=conteudo, autor_id=autor_id, pergunta_id=pergunta_id)
-
-    db.session.add(nova_resposta)
+    nova_pergunta = Pergunta(titulo=titulo, conteudo=conteudo, data_criacao=datetime.utcnow(), autor_id=autor_id)
+    db.session.add(nova_pergunta)
     db.session.commit()
+    flash('Pergunta adicionada com sucesso!', 'success')
 
-    return jsonify({
-        'id': nova_resposta.id,
-        'conteudo': nova_resposta.conteudo,
-        'autor': nova_resposta.autor.nome
-    })
-
-# Rota para adicionar um comentário
-@app.route('/comentario', methods=['POST'])
-def adicionar_comentario():
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para adicionar um comentário.', 'error')
-        return redirect(url_for('menu'))
-
-    conteudo = request.json['conteudo']
-    resposta_id = request.json['resposta_id']
-    autor_id = session['user_id']
-
-    novo_comentario = Comentario(conteudo=conteudo, autor_id=autor_id, resposta_id=resposta_id)
-
-    db.session.add(novo_comentario)
-    db.session.commit()
-
-    return jsonify({
-        'conteudo': novo_comentario.conteudo,
-        'autor': novo_comentario.autor.nome
-    })
-
-# Rota para o login
-@app.route('/login', methods=['POST'])
-def login():
-    email = request.form['email']
-    senha = request.form['senha']
-
-    # Verifica se o usuário existe e se a senha está correta
-    usuario = Usuario.query.filter_by(email=email).first()
-    if not usuario or not check_password_hash(usuario.senha, senha):
-        flash('Email ou senha incorretos', 'error')
-        return redirect(url_for('homepage'))
-
-    session['user_id'] = usuario.id
-    flash('Login realizado com sucesso!', 'success')
-    return redirect('/menu')
-
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
-
-@app.route("/menu")
-def menu():
-    perguntas = Pergunta.query.all()  # Consulta todas as perguntas
-    return render_template("menu.html", perguntas=perguntas)  # Passa as perguntas para o template
-
-@app.route("/perfil")
-def perfil():
-    return render_template("perfil.html")
-
-@app.route("/pergunta")
-def pergunta():
-    perguntas = Pergunta.query.all()
-    return render_template("pergunta.html", perguntas=perguntas)
+    return redirect(url_for('menu'))  # Redireciona para o menu após adicionar a pergunta
 
 # Inicia o servidor
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=5000)
