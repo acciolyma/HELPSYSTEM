@@ -1,5 +1,4 @@
 # CONFIGURAÇÃO BANCO DE DADOS
-
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -44,12 +43,11 @@ class Resposta(db.Model):
 
 # Tabela de Comentários
 class Comentario(db.Model):
-        id = db.Column(db.Integer, primary_key=True)
-        conteudo = db.Column(db.Text, nullable=False)
-        data_criacao = db.Column(db.DateTime, default=datetime.utcnow)
-        autor_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
-        resposta_id = db.Column(db.Integer, db.ForeignKey('resposta.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    conteudo = db.Column(db.Text, nullable=False)
+    data_criacao = db.Column(db.DateTime, default=datetime.utcnow)
+    autor_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
+    resposta_id = db.Column(db.Integer, db.ForeignKey('resposta.id'), nullable=False)
 
-        def __repr__(self):
-            return f'Comentario(Autor: "{self.autor.nome}", Resposta ID: {self.resposta_id})'
-
+    def __repr__(self):
+        return f'Comentario(Autor: "{self.autor.nome}", Resposta ID: {self.resposta_id})'

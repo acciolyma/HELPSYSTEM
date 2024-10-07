@@ -10,6 +10,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SECRET_KEY'] = 'chavesecreta'
 db.init_app(app)
 
+# Cria as tabelas no banco de dados
+with app.app_context():
+    db.create_all()
+
 # Rota para página de cadastro
 @app.route("/cadastro", methods=['GET', 'POST'])
 def cadastro():
@@ -54,21 +58,18 @@ def homepage():
 
     return render_template("homepage.html")
 
-
-# Rota para pergunta
-
+# Rota para listar perguntas
 @app.route('/perguntas')
 def listar_perguntas():
     perguntas = Pergunta.query.all()
     return render_template("pergunta.html", perguntas=perguntas)
 
-
+# Rota para adicionar pergunta
 @app.route('/pergunta', methods=['POST'])
 def adicionar_pergunta():
     titulo = request.form['titulo']
     conteudo = request.form['conteudo']
 
-    # Verificar se o usuário está logado
     if 'user_id' not in session:
         flash('Você precisa estar logado para adicionar uma pergunta.', 'error')
         return redirect(url_for('menu'))
@@ -84,7 +85,7 @@ def adicionar_pergunta():
         app.logger.error(f"Erro ao adicionar pergunta: {e}")
         flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
 
-    return redirect(url_for('menu'))
+    return redirect(url_for('pergunta'))
 
 # Rota para adicionar uma resposta
 @app.route('/resposta', methods=['POST'])
@@ -129,7 +130,7 @@ def adicionar_comentario():
         'autor': novo_comentario.autor.nome
     })
 
-
+# Rota para o login
 @app.route('/login', methods=['POST'])
 def login():
     email = request.form['email']
@@ -141,11 +142,9 @@ def login():
         flash('Email ou senha incorretos', 'error')
         return redirect(url_for('homepage'))
 
-    # Armazenando o ID do usuário na sessão
     session['user_id'] = usuario.id
     flash('Login realizado com sucesso!', 'success')
     return redirect('/menu')
-
 
 @app.route("/dashboard")
 def dashboard():
@@ -153,7 +152,8 @@ def dashboard():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    perguntas = Pergunta.query.all()  # Consulta todas as perguntas
+    return render_template("menu.html", perguntas=perguntas)  # Passa as perguntas para o template
 
 @app.route("/perfil")
 def perfil():
@@ -161,7 +161,7 @@ def perfil():
 
 @app.route("/pergunta")
 def pergunta():
-    perguntas = Pergunta.query.all()  # Exibe todas as perguntas
+    perguntas = Pergunta.query.all()
     return render_template("pergunta.html", perguntas=perguntas)
 
 # Inicia o servidor

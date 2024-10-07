@@ -8,7 +8,20 @@
 <body>
     <h1>Bem-vindo ao Help System</h1>
     <a href="/pergunta">Adicionar Pergunta</a>
-    <!-- Outras opções do dashboard -->
+
 </body>
+
+
+<h2>Todas as Perguntas</h2>
+
+{% for pergunta in perguntas %}
+    <div class="pergunta">
+        <h3>{{ pergunta.titulo }}</h3>
+        <p>{{ pergunta.conteudo }}</p>
+        <small>Autor: {{ pergunta.autor.nome }} | Criado em: {{ pergunta.data_criacao }}</small>
+    </div>
+{% else %}
+    <p>Nenhuma pergunta foi encontrada.</p>
+{% endfor %}
 
 </html>
