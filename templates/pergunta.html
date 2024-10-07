@@ -19,18 +19,111 @@
         <button type="submit">Enviar</button>
     </form>
 
-   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perguntas</title>
-</head>
-<body>
-    <h1>Todas as Perguntas</h1>
+    <h2>Todas as Perguntas</h2>
 
     {% for pergunta in perguntas %}
-        <h2>{{ pergunta.titulo }}</h2>
-        <p>{{ pergunta.conteudo }}</p>
-        <p>Autor: {{ pergunta.autor.nome }}</p>
+        <div class="pergunta">
+            <h3>{{ pergunta.titulo }}</h3>
+            <p>{{ pergunta.conteudo }}</p>
+            <p>Autor: {{ pergunta.autor.nome }}</p>
+
+            <h4>Respostas</h4>
+            <div class="respostas" id="respostas-{{ pergunta.id }}">
+                {% for resposta in pergunta.respostas %}
+                    <div class="resposta">
+                        <p>{{ resposta.conteudo }}</p>
+                        <p>Autor: {{ resposta.autor.nome }}</p>
+                        <button type="button" onclick="curtirResposta({{ resposta.id }})">Curtir</button>
+                        <button type="button" onclick="mostrarComentario({{ resposta.id }})">Comentar</button>
+
+                        <div class="comentarios" id="comentarios-{{ resposta.id }}" style="display: none;">
+                            <h5>Adicionar um comentário</h5>
+                            <form onsubmit="adicionarComentario(event, {{ resposta.id }})">
+                                <textarea name="conteudo" rows="2" cols="30" required></textarea><br>
+                                <button type="submit">Enviar Comentário</button>
+                            </form>
+                            <h6>Comentários</h6>
+                            {% for comentario in resposta.comentarios %}
+                                <p>{{ comentario.conteudo }} - Autor: {{ comentario.autor.nome }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <h4>Adicionar uma nova resposta</h4>
+            <form onsubmit="adicionarResposta(event, {{ pergunta.id }})">
+                <textarea name="conteudo" rows="2" cols="50" required></textarea><br>
+                <button type="submit">Enviar Resposta</button>
+            </form>
+        </div>
     {% endfor %}
+
+    <script>
+        function curtirResposta(respostaId) {
+            // Implementar lógica para curtir a resposta
+            alert("Você curtiu a resposta " + respostaId);
+        }
+
+        function mostrarComentario(respostaId) {
+            var comentariosDiv = document.getElementById("comentarios-" + respostaId);
+            comentariosDiv.style.display = (comentariosDiv.style.display === "none") ? "block" : "none";
+        }
+
+        function adicionarResposta(event, perguntaId) {
+            event.preventDefault();
+            const form = event.target;
+            const conteudo = form.querySelector('textarea').value;
+
+            fetch('/resposta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pergunta_id: perguntaId, conteudo: conteudo }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const respostasDiv = document.getElementById(`respostas-${perguntaId}`);
+                respostasDiv.innerHTML += `
+                    <div class="resposta">
+                        <p>${data.conteudo}</p>
+                        <p>Autor: ${data.autor}</p>
+                        <button type="button" onclick="curtirResposta(${data.id})">Curtir</button>
+                        <button type="button" onclick="mostrarComentario(${data.id})">Comentar</button>
+                        <div class="comentarios" id="comentarios-${data.id}" style="display: none;">
+                            <h5>Adicionar um comentário</h5>
+                            <form onsubmit="adicionarComentario(event, ${data.id})">
+                                <textarea name="conteudo" rows="2" cols="30" required></textarea><br>
+                                <button type="submit">Enviar Comentário</button>
+                            </form>
+                            <h6>Comentários</h6>
+                        </div>
+                    </div>
+                `;
+                form.reset();
+            });
+        }
+
+        function adicionarComentario(event, respostaId) {
+            event.preventDefault();
+            const form = event.target;
+            const conteudo = form.querySelector('textarea').value;
+
+            fetch('/comentario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ resposta_id: respostaId, conteudo: conteudo }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const comentariosDiv = document.getElementById(`comentarios-${respostaId}`);
+                comentariosDiv.innerHTML += `<p>${data.conteudo} - Autor: ${data.autor}</p>`;
+                form.reset();
+            });
+        }
+    </script>
 </body>
 </html>

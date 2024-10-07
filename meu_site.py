@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-from models import db, Usuario, Pergunta
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from models import db, Usuario, Pergunta, Resposta, Comentario
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -85,6 +85,49 @@ def adicionar_pergunta():
         flash('Ocorreu um erro ao adicionar a pergunta. Por favor, tente novamente mais tarde.', 'error')
 
     return redirect(url_for('menu'))
+
+# Rota para adicionar uma resposta
+@app.route('/resposta', methods=['POST'])
+def adicionar_resposta():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para adicionar uma resposta.', 'error')
+        return redirect(url_for('menu'))
+
+    conteudo = request.json['conteudo']
+    pergunta_id = request.json['pergunta_id']
+    autor_id = session['user_id']
+
+    nova_resposta = Resposta(conteudo=conteudo, autor_id=autor_id, pergunta_id=pergunta_id)
+
+    db.session.add(nova_resposta)
+    db.session.commit()
+
+    return jsonify({
+        'id': nova_resposta.id,
+        'conteudo': nova_resposta.conteudo,
+        'autor': nova_resposta.autor.nome
+    })
+
+# Rota para adicionar um comentário
+@app.route('/comentario', methods=['POST'])
+def adicionar_comentario():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para adicionar um comentário.', 'error')
+        return redirect(url_for('menu'))
+
+    conteudo = request.json['conteudo']
+    resposta_id = request.json['resposta_id']
+    autor_id = session['user_id']
+
+    novo_comentario = Comentario(conteudo=conteudo, autor_id=autor_id, resposta_id=resposta_id)
+
+    db.session.add(novo_comentario)
+    db.session.commit()
+
+    return jsonify({
+        'conteudo': novo_comentario.conteudo,
+        'autor': novo_comentario.autor.nome
+    })
 
 
 @app.route('/login', methods=['POST'])
