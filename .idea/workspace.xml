@@ -7,8 +7,7 @@
     <list default="true" id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="BACKEND - Para análise">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/forum.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/forum.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meu_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/meu_site.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pergunta.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pergunta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +45,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.mariabranch.executor": "Run",
-    "Python.meu_site.executor": "Run",
-    "Python.models.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "maria",
-    "settings.editor.selected.configurable": "configurable.group.build"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.mariabranch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.meu_site.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;maria&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="python" />
@@ -150,7 +149,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728062646539</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="BACKEND - Para análise">
+      <option name="closed" value="true" />
+      <created>1728064177816</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1728064177818</updated>
+    </task>
+    <task id="LOCAL-00011" summary="BACKEND - Para análise">
+      <option name="closed" value="true" />
+      <created>1728064398452</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1728064398453</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
