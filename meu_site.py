@@ -56,7 +56,7 @@ def homepage():
         flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('menu'))
 
-    return render_template("homepage.html")
+    return render_template("login.html")
 
 # Rota para adicionar pergunta
 @app.route("/pergunta", methods=['GET', 'POST'])
@@ -91,7 +91,7 @@ def menu():
     for pergunta in perguntas:
         pergunta.respostas = Resposta.query.filter_by(pergunta_id=pergunta.id).all()  # Obtém respostas para a pergunta
 
-    return render_template("menu.html", perguntas=perguntas)  # Passa as perguntas para o template
+    return render_template("homepage.html", perguntas=perguntas)  # Passa as perguntas para o template
 
 # Rota para adicionar uma resposta
 @app.route('/responder_pergunta/<int:pergunta_id>', methods=['POST'])
