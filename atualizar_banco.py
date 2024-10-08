@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 db = SQLAlchemy(app)
 
 # Importa os modelos
-from models import Usuario, Pergunta, Resposta, Comentario
+from bancodedados import Usuario, Pergunta, Resposta, Comentario
 
 with app.app_context():
     # Deletar todos os dados das tabelas

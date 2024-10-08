@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="VALE ESSE" />
+    <list default="true" id="2bc1d764-8da6-4dd0-9568-763e855156a4" name="Changes" comment="15:32">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atualizar_banco.py" beforeDir="false" afterPath="$PROJECT_DIR$/atualizar_banco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meu_site.py" beforeDir="false" afterPath="$PROJECT_DIR$/meu_site.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bancodedados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,18 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.atualizar_banco.executor": "Run",
-    "Python.mariabranch.executor": "Run",
-    "Python.meu_site.executor": "Run",
-    "Python.models.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "maria",
-    "settings.editor.selected.configurable": "configurable.group.build"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.atualizar_banco.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mariabranch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.meu_site.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;maria&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="python" />
@@ -194,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728325205960</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="15:32">
+      <option name="closed" value="true" />
+      <created>1728325987738</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1728325987739</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +227,7 @@
     <MESSAGE value="Banco de dados SQLITE" />
     <MESSAGE value="BACKEND - Para análise" />
     <MESSAGE value="VALE ESSE" />
-    <option name="LAST_COMMIT_MESSAGE" value="VALE ESSE" />
+    <MESSAGE value="15:32" />
+    <option name="LAST_COMMIT_MESSAGE" value="15:32" />
   </component>
 </project>
