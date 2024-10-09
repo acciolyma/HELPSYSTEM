@@ -19,6 +19,6 @@ O **HelpSystem** é uma plataforma de fórum destinada a servidores, oferecendo 
 
 ## Objetivo  
 
-O HelpSystem foi projetado para ser uma ferramenta de apoio que permite aos servidores esclarecer dúvidas, compartilhar experiências e construir uma comunidade colaborativa.  
+O HelpSystem foi projetado para ser uma ferramenta de apoio que permite aos servidores esclarecer dúvidas, compartilhar experiências e construir uma comunidade colaborativa. 
 
-Sinta-se à vontade para explorar o repositório, contribuir e compartilhar suas sugestões!
+
